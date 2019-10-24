@@ -25,11 +25,11 @@ const Step3 = props => {
           <div style={{ color: "red" }}>{props.selectedData.errors.total}</div>
         </Grid>
       )}
-      <div style={{ height: "700", padding: "5%" }}>
+      <div style={{ height: "700", padding: "4%" }}>
         {props.selectedData.dishSelection.map((dish, index) => {
           counter += 1;
           return (
-            <div key={index} style={{ marginTop: "5%" }}>
+            <div key={index} style={{ marginTop: "4%" }}>
               <Grid container item sm={12}>
                 <Grid item sm={5}>
                   <InputLabel>Please select a dish</InputLabel>
@@ -57,8 +57,8 @@ const Step3 = props => {
                     })}
                   </Select>
                 </Grid>
-                <Grid item sm={1} />
-                <Grid item sm={5}>
+                <Grid item sm={3} />
+                <Grid item sm={3}>
                   <InputLabel>Number of servings</InputLabel>
                   <TextField
                     type="number"
@@ -91,6 +91,7 @@ const Step3 = props => {
         {!checkAvailableDish(props.availableDishes) &&
         props.selectedData.dishSelection[counter - 1]["name"] !== "" ? (
           <Button
+            style={{ marginTop: "2%" }}
             type="button"
             variant="contained"
             color="primary"
@@ -100,6 +101,7 @@ const Step3 = props => {
           </Button>
         ) : (
           <Button
+            style={{ marginTop: "3%" }}
             type="button"
             disabled
             variant="contained"
