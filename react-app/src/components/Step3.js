@@ -89,11 +89,26 @@ const Step3 = props => {
           </Grid>
         )}
         {!checkAvailableDish(props.availableDishes) &&
-          props.selectedData.dishSelection[counter - 1]["name"] !== "" && (
-            <Button type="button" color="primary" onClick={props.addDish}>
-              Add Dish
-            </Button>
-          )}
+        props.selectedData.dishSelection[counter - 1]["name"] !== "" ? (
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+            onClick={props.addDish}
+          >
+            Add Dish
+          </Button>
+        ) : (
+          <Button
+            type="button"
+            disabled
+            variant="contained"
+            color="primary"
+            onClick={props.addDish}
+          >
+            Add Dish
+          </Button>
+        )}
       </div>
     </>
   );
