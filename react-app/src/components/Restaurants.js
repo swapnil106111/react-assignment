@@ -242,6 +242,17 @@ class Restaurants extends Component {
     this.setState({ mealType: uniqueMealType });
   }
 
+  handleDelete = (index, dishName) => {
+    const selectedData = this.state.selectedData;
+    const availableDishes = this.state.availableDishes;
+    availableDishes[dishName] = true;
+    selectedData.dishSelection.splice(index, 1);
+    this.setState({
+      selectedData: selectedData,
+      availableDishes: availableDishes
+    });
+  };
+
   handleChange = (name, value, index = 0) => {
     if (name === "people") {
       const selectedData = this.state.selectedData;
@@ -326,6 +337,7 @@ class Restaurants extends Component {
             selectedData={this.state.selectedData}
             handleChange={this.handleChange}
             addDish={this.addDish}
+            handleDelete={this.handleDelete}
           />
         );
       case 3:
