@@ -384,7 +384,7 @@ class Restaurants extends Component {
         });
         if (total < selectedData.people) {
           selectedData.errors["total"] =
-            "Total number of dishes must be greater or equal to number of people";
+            "Total number of servings must be greater or equal to number of people";
           flag = false;
         }
       }
