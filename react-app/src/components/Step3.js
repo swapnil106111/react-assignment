@@ -25,7 +25,7 @@ const Step3 = props => {
           <div style={{ color: "red" }}>{props.selectedData.errors.total}</div>
         </Grid>
       )}
-      <div style={{ height: "700" }}>
+      <div style={{ height: "700", padding: "5%" }}>
         {props.selectedData.dishSelection.map((dish, index) => {
           counter += 1;
           return (
