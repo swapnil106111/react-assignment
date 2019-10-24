@@ -4,7 +4,7 @@ import { Select, MenuItem, InputLabel } from "@material-ui/core";
 
 const Step2 = props => {
   return (
-    <div style={{ height: 300 }}>
+    <div style={{ height: 300, padding: "5%" }}>
       <div>
         <InputLabel>Please select a restaurant</InputLabel>
         <Select
