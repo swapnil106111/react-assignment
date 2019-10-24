@@ -422,7 +422,9 @@ class Restaurants extends Component {
         </Stepper>
         <div>
           {this.state.activeStep === steps.length ? (
-            <div>Order placed successfully.</div>
+            <div style={{ height: 300, padding: "5%" }}>
+              Order placed successfully.
+            </div>
           ) : (
             <div>
               {this.getStepContent(this.state.activeStep)}
