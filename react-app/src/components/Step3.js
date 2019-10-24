@@ -6,8 +6,10 @@ import {
   InputLabel,
   TextField,
   Grid,
-  Button
+  Button,
+  IconButton
 } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 const checkAvailableDish = availableDishes => {
   const values = Object.values(availableDishes);
   return values.every(function(dish) {
@@ -31,7 +33,7 @@ const Step3 = props => {
           return (
             <div key={index} style={{ marginTop: "4%" }}>
               <Grid container item sm={12}>
-                <Grid item sm={5}>
+                <Grid item sm={4}>
                   <InputLabel>Please select a dish</InputLabel>
                   <Select
                     name="dish"
@@ -57,8 +59,8 @@ const Step3 = props => {
                     })}
                   </Select>
                 </Grid>
-                <Grid item sm={3} />
-                <Grid item sm={3}>
+                <Grid item sm={1} />
+                <Grid item sm={4}>
                   <InputLabel>Number of servings</InputLabel>
                   <TextField
                     type="number"
@@ -75,6 +77,20 @@ const Step3 = props => {
                     style={{ width: 200 }}
                   />
                 </Grid>
+                <Grid item sm={1} />
+                {props.selectedData.dishSelection.length !== 1 && (
+                  <Grid item sm={2}>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => {
+                        props.handleDelete(index, dish.name);
+                      }}
+                      style={{ marginTop: 10 }}
+                    >
+                      <DeleteIcon fontSize="inherit" />
+                    </IconButton>
+                  </Grid>
+                )}
               </Grid>
             </div>
           );
@@ -119,6 +135,7 @@ Step3.propTypes = {
   availableDishes: PropTypes.object.isRequired,
   selectedData: PropTypes.object.isRequired,
   addDish: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired
 };
 export default Step3;
