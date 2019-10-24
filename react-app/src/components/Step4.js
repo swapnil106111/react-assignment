@@ -37,12 +37,12 @@ const Step4 = props => {
       </Grid>
       <Grid container item sm={12} style={{ marginTop: "5%" }}>
         <Grid item sm={3} />
-        <Grid item sm={3}>
+        <Grid item sm={2}>
           Dishes
         </Grid>
-
-        <Grid item sm={6}>
-          <Paper style={{ width: "70%" }}>
+        <Grid item sm={2} />
+        <Grid item sm={5}>
+          <Paper style={{ width: "70%", padding: "5%" }}>
             {props.selectedData.dishSelection.map(dish => {
               return (
                 <div key={dish.name}>
