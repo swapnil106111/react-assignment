@@ -11,3 +11,6 @@ yarn install
 
 # Step4 
 yarn start
+
+# To test the app
+yarn test
