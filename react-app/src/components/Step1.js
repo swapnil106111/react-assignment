@@ -24,7 +24,7 @@ const Step1 = props => {
           })}
         </Select>
         {props.selectedData.errors.meal && (
-          <div style={{ color: "red" }}>{props.selectedData.errors.meal}</div>
+          <p style={{ color: "red" }}>{props.selectedData.errors.meal}</p>
         )}
       </div>
 
@@ -41,7 +41,7 @@ const Step1 = props => {
           style={{ width: 200 }}
         />
         {props.selectedData.errors.people && (
-          <div style={{ color: "red" }}>{props.selectedData.errors.people}</div>
+          <p style={{ color: "red" }}>{props.selectedData.errors.people}</p>
         )}
       </div>
     </div>

@@ -10,20 +10,21 @@ import {
   IconButton
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-const checkAvailableDish = availableDishes => {
+
+export const checkAvailableDish = availableDishes => {
   const values = Object.values(availableDishes);
   return values.every(function(dish) {
     return dish === false;
   });
 };
+
 const Step3 = props => {
   let counter = 0;
-
   return (
     <>
       {props.selectedData.errors.total && (
         <Grid container item sm={12}>
-          <Grid item sm={2} />
+          <Grid item sm={3} />
           <div style={{ color: "red" }}>{props.selectedData.errors.total}</div>
         </Grid>
       )}
@@ -76,7 +77,13 @@ const Step3 = props => {
                     InputProps={{ inputProps: { min: 1, max: 10 } }}
                     style={{ width: 200 }}
                   />
+                  {dish.validServings === false && (
+                    <div style={{ color: "red" }}>
+                      Please enter servings more than 0
+                    </div>
+                  )}
                 </Grid>
+
                 <Grid item sm={1} />
                 {props.selectedData.dishSelection.length !== 1 && (
                   <Grid item sm={2}>
@@ -97,7 +104,7 @@ const Step3 = props => {
         })}
         {props.selectedData.errors.selectdish && (
           <Grid container item sm={12}>
-            <Grid item sm={5}>
+            <Grid item sm={4}>
               <div style={{ color: "red" }}>
                 {props.selectedData.errors.selectdish}
               </div>
@@ -131,6 +138,7 @@ const Step3 = props => {
     </>
   );
 };
+
 Step3.propTypes = {
   availableDishes: PropTypes.object.isRequired,
   selectedData: PropTypes.object.isRequired,

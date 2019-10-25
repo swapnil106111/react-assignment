@@ -12,6 +12,7 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+
 class Restaurants extends Component {
   constructor(props) {
     super(props);
@@ -224,7 +225,7 @@ class Restaurants extends Component {
         mealType: "",
         people: "",
         restaurant: "",
-        dishSelection: [{ name: "", servings: 1 }],
+        dishSelection: [{ name: "", servings: 1, validServings: true }],
         errors: {}
       }
     };
@@ -348,7 +349,11 @@ class Restaurants extends Component {
   };
   addDish = () => {
     const selectedData = this.state.selectedData;
-    selectedData.dishSelection.push({ name: "", servings: 1 });
+    selectedData.dishSelection.push({
+      name: "",
+      servings: 1,
+      validServings: true
+    });
     this.setState({
       selectedData
     });
@@ -387,11 +392,18 @@ class Restaurants extends Component {
         }
       } else if (prevState.activeStep === 2) {
         let total = 0;
+
         selectedData.dishSelection.forEach((dish, index) => {
           total += dish.servings;
           if (dish.name === "") {
             flag = false;
             selectedData.errors["selectdish"] = "Please select a dish";
+          }
+          if (dish.servings === "" || parseInt(dish.servings) <= 0) {
+            flag = false;
+            dish.validServings = false;
+          } else {
+            dish.validServings = true;
           }
         });
         if (total < selectedData.people) {
@@ -447,6 +459,7 @@ class Restaurants extends Component {
                     variant="contained"
                     color="primary"
                     onClick={this.handleBack}
+                    className="prev"
                   >
                     prev
                   </Button>
@@ -456,6 +469,7 @@ class Restaurants extends Component {
                   <Button
                     variant="contained"
                     color="primary"
+                    className="next"
                     onClick={this.handleNext}
                   >
                     {this.state.activeStep === steps.length - 1
