@@ -74,7 +74,7 @@ const Step3 = props => {
                         index
                       )
                     }
-                    InputProps={{ inputProps: { min: 1, max: 10 } }}
+                    InputProps={{ inputProps: { min: 1 } }}
                     style={{ width: 200 }}
                   />
                   {dish.validServings === false && (
